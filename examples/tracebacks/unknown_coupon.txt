@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/dev/sample_repo/scripts/checkout.py", line 7, in <module>
+    total = cart.checkout_total("EXPIRED50")
+  File "/home/dev/sample_repo/shop/cart.py", line 13, in checkout_total
+    return compute_total(self.items, coupon_code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dev/sample_repo/shop/pricing.py", line 17, in compute_total
+    return apply_discount(subtotal(items), percent)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dev/sample_repo/shop/pricing.py", line 10, in apply_discount
+    if percent < 0 or percent > 100:
+       ^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'NoneType' and 'int'

@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "patchproof"
+version = "0.1.0"
+description = "MCP server that maps Python tracebacks onto a static code graph and ranks evidence-grounded root-cause hypotheses with NVIDIA Nemotron on Nebius Token Factory."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+authors = [{ name = "Roshan kr singh" }]
+keywords = ["mcp", "root-cause-analysis", "static-analysis", "nemotron", "nebius", "debugging"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Debuggers",
+]
+dependencies = [
+    "mcp==1.27.0",
+    "networkx==3.5",
+    "httpx==0.28.1",
+    "jsonschema==4.23.0",
+    "anyio==4.7.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.4.2"]
+
+[project.scripts]
+patchproof = "patchproof.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["live: calls the real Nebius Token Factory API (opt-in via PATCHPROOF_LIVE_TESTS=1)"]
